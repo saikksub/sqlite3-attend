@@ -1,2 +1,1 @@
-# electron-sql
-SQLite3 Database wrapper for electron application
+# A node sqlite3-helper
