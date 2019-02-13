@@ -1,0 +1,31 @@
+{
+  "name": "sqlite3-helper",
+  "version": "0.1.0",
+  "description": "A node-Sqlite3 helper package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saikksub/sqlite3-helper.git"
+  },
+  "keywords": [
+    "sql",
+    "sqlite",
+    "sqlite3",
+    "database",
+    "helper",
+    "wrapper"
+  ],
+  "author": "saikksub <saikksub@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/saikksub/sqlite3-helper/issues"
+  },
+  "homepage": "https://github.com/saikksub/sqlite3-helper#readme",
+  "dependencies": {
+    "fs-extra": "^7.0.1",
+    "sqlite3": "^4.0.6"
+  }
+}
