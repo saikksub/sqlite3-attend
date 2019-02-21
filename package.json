@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/saikksub/sqlite3-helper#readme",
   "dependencies": {
+    "async-foreach": "^0.1.3",
     "fs-extra": "^7.0.1",
     "sqlite3": "^4.0.6"
   }
