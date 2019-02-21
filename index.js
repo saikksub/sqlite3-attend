@@ -26,10 +26,13 @@ const NodeSqlite3 = function (props) {
  */
 NodeSqlite3.prototype.init = function (schema) {
   return new Promise((resolve, reject) => {
+
+    const context = this
+
     if (!(schema && schema.constructor === [].constructor)) {
       reject(new Error('Database schema is required.'))
     }
-    const context = this
+
     // Resolve absolute database path
     sql.ensureDatabaseDir(this.config)
   
@@ -41,25 +44,24 @@ NodeSqlite3.prototype.init = function (schema) {
       } else {
         // Set database context for handler
         context.db = db
+
         context.db.serialize(() => {
           // Create required SQL tables
           forEach(schema, function (table) {
+
             const asyncDone = this.async()
+  
             // Check table name is valid
             if (table.name && typeof table.name === 'string') {
-              const columnNameType = [] // Stores column and its type
-              const columnName = [] // Stores ONLY name of columns
-              if (table.keys.constructor === [].constructor) {
-                table.keys.forEach((key) => {
-                  if (key && key.name && key.type) {
-                    columnNameType.push(`${key.name} ${key.type}`)
-                    columnName.push(`${key.name}`)
-                  }
-                })
+              if (table.keys.constructor !== [].constructor) {
+                asyncDone()
               }
-              if (columnNameType.length > 0) {
+              // Generate SQL table definition
+              const tableData = getTableDataFromTable(table)
+
+              if (tableData.withTypes.length > 0) {
                 // Remove duplicate schema
-                const schema = [...new Set(columnNameType)].join(', ')
+                const schema = [...new Set(tableData.withTypes)].join(', ')
                 // Try to create table
                 // Create/update table with schema
                 context.db.run(
@@ -70,7 +72,8 @@ NodeSqlite3.prototype.init = function (schema) {
                     if (error) {
                       // Table already exists
                       // Update columns if any
-                      const columns = [... new Set(columnName)]
+                      const columns = [... new Set(tableData.withOnlyNames)]
+
                       // Update table with columns
                       updateTable({
                         database: context.db, // Database handle
@@ -84,6 +87,7 @@ NodeSqlite3.prototype.init = function (schema) {
                         console.log(err)
                         asyncDone()
                       })
+
                     } else {
                       asyncDone()
                     }
@@ -137,6 +141,25 @@ function updateTable ({ database, table, columns, schema }) {
       resolve()
     })
   })
+}
+
+function getTableDataFromTable (table) {
+  // Stores column and its type
+  const withTypes = []
+  // Stores ONLY name of columns
+  const withOnlyNames = []
+  if (table.keys.constructor === [].constructor) {
+    table.keys.forEach((key) => {
+      if (key && key.name && key.type) {
+        withTypes.push(`${key.name} ${key.type}`)
+        withOnlyNames.push(`${key.name}`)
+      }
+    })
+  }
+  return {
+    withTypes,
+    withOnlyNames
+  }
 }
 
 /**
