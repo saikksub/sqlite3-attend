@@ -4,6 +4,7 @@
 
 'use strict'
 const sql = require('./lib/sql')
+const util = require('./lib/util')
 const forEach = require('async-foreach').forEach
 
 /**
@@ -57,7 +58,7 @@ NodeSqlite3.prototype.init = function (schema) {
                 asyncDone()
               }
               // Generate SQL table definition
-              const tableData = getTableDataFromTable(table)
+              const tableData = util.getTableDataFromTable(table)
 
               if (tableData.withTypes.length > 0) {
                 // Remove duplicate schema
@@ -75,7 +76,7 @@ NodeSqlite3.prototype.init = function (schema) {
                       const columns = [... new Set(tableData.withOnlyNames)]
 
                       // Update table with columns
-                      updateTable({
+                      util.updateTable({
                         database: context.db, // Database handle
                         table, // Table
                         columns, // Column names
@@ -108,67 +109,14 @@ NodeSqlite3.prototype.init = function (schema) {
 }
 
 /**
- * Update table with columns
- * This will add new column, if not exits
- */
-function updateTable ({ database, table, columns, schema }) {
-  return new Promise((resolve, reject) => {
-    // Iterate each individual columns
-    forEach(columns, function (columnName, index) {
-      const asyncDone = this.async()
-      database.run(
-        `SELECT ${columnName} FROM ${table.name}`,
-        (err) => {
-          if (err) {
-            // Column does not exists
-            // Create column
-            database.run(
-              `ALTER TABLE ${table.name} ADD ${schema.split(', ')[index]}`,
-              (err) => {
-                if (err) {
-                  asyncDone()
-                } else {
-                  asyncDone()
-                }
-              }
-            )
-          } else {
-            asyncDone()
-          }
-        }
-      )
-    }, function () {
-      resolve()
-    })
-  })
-}
-
-function getTableDataFromTable (table) {
-  // Stores column and its type
-  const withTypes = []
-  // Stores ONLY name of columns
-  const withOnlyNames = []
-  if (table.keys.constructor === [].constructor) {
-    table.keys.forEach((key) => {
-      if (key && key.name && key.type) {
-        withTypes.push(`${key.name} ${key.type}`)
-        withOnlyNames.push(`${key.name}`)
-      }
-    })
-  }
-  return {
-    withTypes,
-    withOnlyNames
-  }
-}
-
-/**
  * SQL Database commands API
  */
+NodeSqlite3.prototype.getHandle = sql.getHandle
 NodeSqlite3.prototype.readFullTable = sql.readFullTable
-NodeSqlite3.prototype.readTableEntryID = sql.readTableByID
+NodeSqlite3.prototype.updateTableByValue = sql.updateTableByValue
 NodeSqlite3.prototype.writeTable = sql.writeTable
-NodeSqlite3.prototype.updateTableByID = sql.updateTableByID
-NodeSqlite3.prototype.deleteTableById = sql.deleteTableById
+NodeSqlite3.prototype.deleteRowByValue = sql.deleteRowByValue
+NodeSqlite3.prototype.clearFullTable = sql.clearFullTable
+NodeSqlite3.prototype.readRowByValue = sql.readRowByValue
 
 module.exports = NodeSqlite3
