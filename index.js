@@ -28,6 +28,10 @@ const NodeSqlite3 = function (props) {
 NodeSqlite3.prototype.init = function (schema) {
   return new Promise((resolve, reject) => {
 
+    if (!(schema && schema.constructor === [].constructor)) {
+      reject(new Error('Invalid database schema. Schema should be an Array.'))
+    }
+
     const context = this
 
     if (!(schema && schema.constructor === [].constructor)) {
@@ -49,14 +53,12 @@ NodeSqlite3.prototype.init = function (schema) {
         context.db.serialize(() => {
           // Create required SQL tables
           forEach(schema, function (table) {
-
             const asyncDone = this.async()
-  
-            // Check table name is valid
-            if (table.name && typeof table.name === 'string') {
-              if (table.keys.constructor !== [].constructor) {
-                asyncDone()
-              }
+            if (
+              table && table.constructor === {}.constructor &&
+              'name' in table && table.name && typeof table.name === 'string' &&
+              'columns' in table && table.columns && table.columns === [].constructor
+            ) {
               // Generate SQL table definition
               const tableData = util.getTableDataFromTable(table)
 
@@ -98,6 +100,8 @@ NodeSqlite3.prototype.init = function (schema) {
                 // keys are empty
                 asyncDone()
               }
+            } else {
+              asyncDone()
             }
           }, function () {
             resolve()

@@ -4,7 +4,8 @@
   "description": "A node-Sqlite3 helper package",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "install-app-deps"
   },
   "repository": {
     "type": "git",
