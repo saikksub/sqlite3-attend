@@ -59,7 +59,6 @@ NodeSqlite3.prototype.init = function (schema) {
               'name' in table && table.name && typeof table.name === 'string' &&
               'columns' in table && table.columns && table.columns.constructor === [].constructor
             ) {
-              console.log('here')
               // Generate SQL table definition
               const tableData = util.getTableDataFromTable(table)
 
@@ -88,7 +87,6 @@ NodeSqlite3.prototype.init = function (schema) {
                         asyncDone()
                         // Done
                       }).catch((err) => {
-                        console.log(err)
                         asyncDone()
                       })
 
