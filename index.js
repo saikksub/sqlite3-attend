@@ -57,8 +57,9 @@ NodeSqlite3.prototype.init = function (schema) {
             if (
               table && table.constructor === {}.constructor &&
               'name' in table && table.name && typeof table.name === 'string' &&
-              'columns' in table && table.columns && table.columns === [].constructor
+              'columns' in table && table.columns && table.columns.constructor === [].constructor
             ) {
+              console.log('here')
               // Generate SQL table definition
               const tableData = util.getTableDataFromTable(table)
 
