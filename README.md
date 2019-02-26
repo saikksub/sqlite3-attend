@@ -4,7 +4,7 @@ Asynchronous higher level [node-sqlite3](https://github.com/mapbox/node-sqlite3)
 
 # Usage
 **Note**: the module must be installed before use.
-```
+``` javascript
   const Sqlite3 = require('sqlite3-attend')
   
   const sql = new Sqlite3({
@@ -62,7 +62,7 @@ Asynchronous higher level [node-sqlite3](https://github.com/mapbox/node-sqlite3)
   })
 ```
 ## Write a new row into the table
-```
+``` javascript
   sql.writeTable({
     name: 'users',
     data: [
@@ -88,7 +88,7 @@ Asynchronous higher level [node-sqlite3](https://github.com/mapbox/node-sqlite3)
 
 ## Read full table
 
-```
+``` javascript
   sql.readFullTable({
     name: 'users'
   }).then((data) => {
@@ -99,7 +99,7 @@ Asynchronous higher level [node-sqlite3](https://github.com/mapbox/node-sqlite3)
 ```
 
 ## Read table row by value
-```
+``` javascript
   sql.readRowByValue({
     name: 'users',
     where: {
@@ -118,7 +118,7 @@ In the above API, the object `where` is a condition which specifies `key` and `v
 The above example will try to find one or more row(s) that matches `name` as `kiran`, inside a table with name `users`.
 
 ## Update table row by value
-```
+``` javascript
   sql.updateTableByValue({
     name: 'users',
     where: {
@@ -146,7 +146,7 @@ The `data` object contains new values. This `data` object is an Array of objects
 
 
 ## Delete table row by value
-```
+``` javascript
   sql.deleteRowByValue({
     name: 'users',
     where: {
@@ -162,7 +162,7 @@ In the above API, the object `where` is a condition which specifies `key` and `v
 In the example, **all** the rows that containig `name` as `Kiran Sai` will be deleted.
 
 ## Clear a full table
-```
+``` javascript
   sql.clearFullTable({
     name: 'users'
   }).then(() => {
@@ -174,7 +174,7 @@ In the example, **all** the rows that containig `name` as `Kiran Sai` will be de
 
 
 ## Get SQL database handle (Synchronous method)
-```
+``` javascript
   sql.getHandle()
 ```
 
