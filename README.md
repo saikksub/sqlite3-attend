@@ -115,9 +115,9 @@ https://travis-ci.com/saikksub/sqlite3-attend.svg?branch=master
   })
 ```
 
-In the above API, the object `where` is a condition which specifies `key` and `value` of our condition.
+In the above API, the object `where` is a key containing condition which specifies target table name - `key` and its value - `value`.
 
-The above example will try to find one or more row(s) that matches `name` as `kiran`, inside a table with name `users`.
+The above example will try to find one/more row(s) inside a table `users` which contains `name` match with `kiran`.
 
 ## Update table row by value
 ``` javascript
@@ -142,9 +142,9 @@ The above example will try to find one or more row(s) that matches `name` as `ki
   })
 ```
 
-In the above API, the object `where` is a condition which specifies `key` and `value` of our condition.
+In the above API, the object `where` is a key containing condition which specifies target table name - `key` and its value - `value`.
 
-The `data` object contains new values. This `data` object is an Array of objects. Each object should specify `key` (column name) and `value` (column value).
+The `data` object contains new values to update. This `data` should be an Array of objects. Each object should represent column name and it's value.
 
 
 ## Delete table row by value
@@ -161,7 +161,7 @@ The `data` object contains new values. This `data` object is an Array of objects
 ```
 In the above API, the object `where` is a condition which specifies `key` and `value` of our condition.
 
-In the example, **all** the rows that containig `name` as `Kiran Sai` will be deleted.
+In the example, **all** the rows that matches `name` as `Kiran Sai` will be deleted.
 
 ## Clear a full table
 ``` javascript
@@ -172,7 +172,7 @@ In the example, **all** the rows that containig `name` as `Kiran Sai` will be de
   })
 ```
 
-`clearFullTable` will clear all the rows of a specified `table`. **This won't delete the table schematic**.
+`clearFullTable` will clear all the rows of a specified `table`. **This won't delete the table definition**.
 
 
 ## Get SQL database handle (Synchronous method)
@@ -180,7 +180,7 @@ In the example, **all** the rows that containig `name` as `Kiran Sai` will be de
   sql.getHandle()
 ```
 
-`getHandle` will return direct file descriptor of SQL data base. This method can be used to work with `sqlite3` directly. 
+`getHandle` will return direct file descriptor of SQL data base. 
 
 # License
 [MIT](https://opensource.org/licenses/MIT)
