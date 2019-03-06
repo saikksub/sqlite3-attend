@@ -1,6 +1,6 @@
 Asynchronous higher level [node-sqlite3](https://github.com/mapbox/node-sqlite3) API for [Node.js](https://nodejs.org/en/).
 
-https://travis-ci.com/saikksub/sqlite3-attend.svg?branch=master
+[![Build Status](https://travis-ci.com/saikksub/sqlite3-attend.svg?branch=master)](https://travis-ci.com/saikksub/sqlite3-attend)
 
 > This library is not released yet.
 
