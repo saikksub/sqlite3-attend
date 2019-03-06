@@ -2,8 +2,6 @@ Asynchronous higher level [node-sqlite3](https://github.com/mapbox/node-sqlite3)
 
 [![Build Status](https://travis-ci.com/saikksub/sqlite3-attend.svg?branch=master)](https://travis-ci.com/saikksub/sqlite3-attend)
 
-> This library is not released yet.
-
 # Usage
 **Note**: the module must be installed before use.
 ``` javascript
