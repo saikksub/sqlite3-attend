@@ -1,6 +1,7 @@
 Asynchronous higher level [node-sqlite3](https://github.com/mapbox/node-sqlite3) API for [Node.js](https://nodejs.org/en/).
 
 [![Build Status](https://travis-ci.com/saikksub/sqlite3-attend.svg?branch=master)](https://travis-ci.com/saikksub/sqlite3-attend)
+[![npm version](https://badge.fury.io/js/sqlite3-attend.svg)](https://badge.fury.io/js/sqlite3-attend)
 
 ## Install
 ``` bash
