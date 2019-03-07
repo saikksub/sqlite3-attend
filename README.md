@@ -2,7 +2,12 @@ Asynchronous higher level [node-sqlite3](https://github.com/mapbox/node-sqlite3)
 
 [![Build Status](https://travis-ci.com/saikksub/sqlite3-attend.svg?branch=master)](https://travis-ci.com/saikksub/sqlite3-attend)
 
-# Usage
+## Install
+``` bash
+  npm i -s sqlite3-attend
+```
+
+## Usage
 **Note**: the module must be installed before use.
 ``` javascript
   const Sqlite3 = require('sqlite3-attend')
