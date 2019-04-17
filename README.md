@@ -14,9 +14,10 @@ Asynchronous higher level [node-sqlite3](https://github.com/mapbox/node-sqlite3)
 ## Usage
 **Note**: the module must be installed before use.
 ``` javascript
-  const Sqlite3 = require('sqlite3-attend')
+  const sqlite3 = require('sqlite3')
+  const Sqlite3Attend = require('sqlite3-attend')
   
-  const sql = new Sqlite3({
+  const sql = new Sqlite3Attend({
     sqlite3: sqlite3, // Sqlite3 dependency
     path: './', // Path to create (or) open SQL database
     name: 'myDatabase' //Name of the database without '.db' extension
