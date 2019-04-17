@@ -17,8 +17,16 @@ const NodeSqlite3 = function (props) {
   if (!(props && props.constructor === {}.constructor)) {
     throw new Error(`Database "path" and "name" is required.`)
   }
-  this.config = props
-  this.db = null
+  if (!props.sqlite3) {
+    throw new Error('Sqlite3 library is required.')
+  }
+  try {
+    props.sqlite3.verbose()
+    this.config = props
+    this.db = null
+  } catch (err) {
+    throw new Error(err)
+  }
 }
 
 /**
