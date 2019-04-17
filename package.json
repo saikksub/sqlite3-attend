@@ -1,6 +1,6 @@
 {
   "name": "sqlite3-attend",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A node-Sqlite3 helper package",
   "main": "index.js",
   "scripts": {
