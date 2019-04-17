@@ -3,8 +3,11 @@ Asynchronous higher level [node-sqlite3](https://github.com/mapbox/node-sqlite3)
 [![Build Status](https://travis-ci.com/saikksub/sqlite3-attend.svg?branch=master)](https://travis-ci.com/saikksub/sqlite3-attend)
 [![npm version](https://badge.fury.io/js/sqlite3-attend.svg)](https://badge.fury.io/js/sqlite3-attend)
 
+> Note: **sqlite3-attend** is just a wrapper around the **sqlite3** npm package. The internal dependency **sqlite3** has been removed. 
+
 ## Install
 ``` bash
+  npm i -S sqlite3
   npm i -s sqlite3-attend
 ```
 
@@ -14,10 +17,9 @@ Asynchronous higher level [node-sqlite3](https://github.com/mapbox/node-sqlite3)
   const Sqlite3 = require('sqlite3-attend')
   
   const sql = new Sqlite3({
-    /* Path to create (or) open SQL database */
-    path: './',
-    /* Name of the database without '.db' extension */
-    name: 'myDatabase'
+    sqlite3: sqlite3, // Sqlite3 dependency
+    path: './', // Path to create (or) open SQL database
+    name: 'myDatabase' //Name of the database without '.db' extension
   })
 
   sql.init([
