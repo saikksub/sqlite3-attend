@@ -1,6 +1,7 @@
 module.exports = {
   title: 'sqlite3-attend',
   description: 'Sqlite3 asynchronous wrapper API for Node.js applications.',
+  base: '/sqlite3-attend/',
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
