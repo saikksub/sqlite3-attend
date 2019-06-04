@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>What is sqlite3-attend? | sqlite3-attend</title>
+    <meta name="description" content="Sqlite3 asynchronous wrapper API for Node.js applications.">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.c5b62ccc.css" as="style"><link rel="preload" href="/assets/js/app.b0655fe9.js" as="script"><link rel="preload" href="/assets/js/4.d0b06be2.js" as="script"><link rel="prefetch" href="/assets/js/2.c96c3a21.js"><link rel="prefetch" href="/assets/js/3.54ecd4d6.js"><link rel="prefetch" href="/assets/js/5.172968dc.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.c5b62ccc.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">sqlite3-attend</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><a href="/getting-started/" class="nav-link router-link-exact-active router-link-active">Guide</a></div><div class="nav-item"><a href="https://www.npmjs.com/package/sqlite3-attend" target="_blank" rel="noopener noreferrer" class="nav-link external">
+    npm
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/saikksub/sqlite3-attend" target="_blank" rel="noopener noreferrer" class="nav-link external">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><a href="/getting-started/" class="nav-link router-link-exact-active router-link-active">Guide</a></div><div class="nav-item"><a href="https://www.npmjs.com/package/sqlite3-attend" target="_blank" rel="noopener noreferrer" class="nav-link external">
+    npm
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/saikksub/sqlite3-attend" target="_blank" rel="noopener noreferrer" class="nav-link external">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>What is sqlite3-attend?</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/getting-started/#getting-started" class="sidebar-link">Getting started</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/getting-started/#installation" class="sidebar-link">Installation</a></li><li class="sidebar-sub-header"><a href="/getting-started/#usage" class="sidebar-link">Usage</a></li></ul></li><li><a href="/getting-started/#api" class="sidebar-link">API</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/getting-started/#write-table" class="sidebar-link">Write table</a></li><li class="sidebar-sub-header"><a href="/getting-started/#read-full-table" class="sidebar-link">Read full table</a></li><li class="sidebar-sub-header"><a href="/getting-started/#read-table-by-object" class="sidebar-link">Read table by object</a></li><li class="sidebar-sub-header"><a href="/getting-started/#update-table-by-object" class="sidebar-link">Update table by object</a></li><li class="sidebar-sub-header"><a href="/getting-started/#delete-row-by-object" class="sidebar-link">Delete row by object</a></li><li class="sidebar-sub-header"><a href="/getting-started/#clear-full-table" class="sidebar-link">Clear full table</a></li><li class="sidebar-sub-header"><a href="/getting-started/#get-sqlite3-handle" class="sidebar-link">Get Sqlite3 handle</a></li></ul></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="what-is-sqlite3-attend"><a href="#what-is-sqlite3-attend" aria-hidden="true" class="header-anchor">#</a> What is sqlite3-attend?</h1> <p>Sqlite3-attend is a wrapper with asynchronous API to perform CRUD operations on sqlite3 databases. It is just a wrapper around <a href="https://www.npmjs.com/package/sqlite3" target="_blank" rel="noopener noreferrer">sqlite3<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> library.</p> <p>Using sqlite3-attend, you can perform CRUD operations such as <strong>Create, Read, Update and Delete</strong>, without having to write or learn SQL commands.</p> <p>These <strong>CRUD operations</strong> are performed on <strong>SQL databases</strong> using <strong>NoSQL style data structures</strong> (key-value pair).</p> <h2 id="getting-started"><a href="#getting-started" aria-hidden="true" class="header-anchor">#</a> Getting started</h2> <h3 id="installation"><a href="#installation" aria-hidden="true" class="header-anchor">#</a> Installation</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> i --save sqlite3-attend
+</code></pre></div><h3 id="usage"><a href="#usage" aria-hidden="true" class="header-anchor">#</a> Usage</h3> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> Sqlite3Attend <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'sqlite3-attend'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> sql <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Sqlite3Attend</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  path<span class="token punctuation">:</span> <span class="token string">'./'</span><span class="token punctuation">,</span> <span class="token comment">// Path to create (or) open SQL database</span>
+  name<span class="token punctuation">:</span> <span class="token string">'myDatabase'</span> <span class="token comment">//Name of the database without '.db' extension</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><blockquote><p>No SQL database will be created from the above snippet. It just creates an object to expose the necessary API to initialize the database and perform operations on it.</p></blockquote> <p>This will create an sqlite3 object. Now define SQL schematic as <code>Array</code> object as follows:</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> sqlSchema <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">'myTable1'</span><span class="token punctuation">,</span> <span class="token comment">// Name of the table</span>
+    columns<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        name<span class="token punctuation">:</span> <span class="token string">'col1'</span><span class="token punctuation">,</span> <span class="token comment">// Name of the column</span>
+        type<span class="token punctuation">:</span> <span class="token string">'TEXT'</span> <span class="token comment">// Type of the column</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        name<span class="token punctuation">:</span> <span class="token string">'col2'</span><span class="token punctuation">,</span>
+        type<span class="token punctuation">:</span> <span class="token string">'TEXT'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        name<span class="token punctuation">:</span> <span class="token string">'col3'</span><span class="token punctuation">,</span>
+        type<span class="token punctuation">:</span> <span class="token string">'TEXT'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">'users'</span><span class="token punctuation">,</span> <span class="token comment">// Name of the table</span>
+    columns<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        name<span class="token punctuation">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token comment">// Name of the column</span>
+        type<span class="token punctuation">:</span> <span class="token string">'TEXT'</span> <span class="token comment">// Type of the column</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        name<span class="token punctuation">:</span> <span class="token string">'email'</span><span class="token punctuation">,</span>
+        type<span class="token punctuation">:</span> <span class="token string">'TEXT'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre></div><p>Each object in the <code>sqlSchema</code> is having <code>name</code> of the table and it's <code>columns</code>.</p> <p>Now let's initialize the SQL database using <code>init</code> asynchronous API.</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token keyword">let</span> isSqlReady <span class="token operator">=</span> <span class="token boolean">false</span>
+
+sql<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span>sqlSchema<span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'SQL database is initialized and is ready to use'</span><span class="token punctuation">)</span>
+    isSqlReady <span class="token operator">=</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>err <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><div class="danger custom-block"><p class="custom-block-title">WARNING</p> <p>Perform SQL operations only after <code>init</code> is successfully initialized.</p></div> <p>Now write data into the table <code>users</code> using <code>writeTable</code> API.</p> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code><span class="token comment">// Only if sql is initialized successfully</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>isSqlReady<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  sql<span class="token punctuation">.</span><span class="token function">writeTable</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">'users'</span><span class="token punctuation">,</span>
+    data<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        name<span class="token punctuation">:</span> <span class="token string">'user1'</span><span class="token punctuation">,</span>
+        email<span class="token punctuation">:</span> <span class="token string">'user1@domain.com'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        name<span class="token punctuation">:</span> <span class="token string">'user2'</span><span class="token punctuation">,</span>
+        email<span class="token punctuation">:</span> <span class="token string">'user2@domain.com'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        name<span class="token punctuation">:</span> <span class="token string">'user3'</span><span class="token punctuation">,</span>
+        email<span class="token punctuation">:</span> <span class="token string">'user3@domain.com'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        name<span class="token punctuation">:</span> <span class="token string">'user3'</span><span class="token punctuation">,</span>
+        email<span class="token punctuation">:</span> <span class="token string">'user3@domain.com'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        name<span class="token punctuation">:</span> <span class="token string">'user4'</span><span class="token punctuation">,</span>
+        email<span class="token punctuation">:</span> <span class="token string">'user4@domain.com'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        name<span class="token punctuation">:</span> <span class="token string">'user5'</span><span class="token punctuation">,</span>
+        email<span class="token punctuation">:</span> <span class="token string">'user5@domain.com'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="api"><a href="#api" aria-hidden="true" class="header-anchor">#</a> API</h2> <p>List of API available:</p> <ul><li><code>writeTable</code> - Write/Append data into specified table</li> <li><code>readFullTable</code> - Read full specified table</li> <li><code>readRowByObject</code> - Read specified row from specified table with <code>Object</code> as condition.</li> <li><code>updateTableByObject</code> - Update specified row from specified table with <code>Object</code> as condition.</li> <li><code>deleteRowByObject</code> - Delete specified row from specified table with <code>Object</code> as condition.</li> <li><code>clearFullTable</code> - Clear entire specified table</li> <li><code>getHandle</code> - Get <code>sqlite3</code> handle to perform SQL commands</li></ul> <h3 id="write-table"><a href="#write-table" aria-hidden="true" class="header-anchor">#</a> Write table</h3> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code>sql<span class="token punctuation">.</span><span class="token function">writeTable</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  name<span class="token punctuation">:</span> <span class="token string">'users'</span><span class="token punctuation">,</span>
+  data<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      name<span class="token punctuation">:</span> <span class="token string">'user1'</span><span class="token punctuation">,</span>
+      email<span class="token punctuation">:</span> <span class="token string">'user1@domain.com'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      name<span class="token punctuation">:</span> <span class="token string">'user2'</span><span class="token punctuation">,</span>
+      email<span class="token punctuation">:</span> <span class="token string">'user2@domain.com'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'done!'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>err <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Failed to perform operation</span>
+  console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="read-full-table"><a href="#read-full-table" aria-hidden="true" class="header-anchor">#</a> Read full table</h3> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code>sql<span class="token punctuation">.</span><span class="token function">readFullTable</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  name<span class="token punctuation">:</span> <span class="token string">'users'</span><span class="token punctuation">,</span>
+  limit<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token comment">// (Optional) Limit the query results</span>
+  offset<span class="token punctuation">:</span> <span class="token number">2</span>  <span class="token comment">// (Optional) Results from offset along with limit</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// resultant data is an Array.</span>
+  <span class="token comment">// If there are no entries available, then array length is zero.</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'full table'</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>err <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Failed to perform operation</span>
+  console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><ul><li><code>limit</code> Number - the number of results on specified table <code>name</code></li> <li><code>offset</code> Number - from where to start reading database on specified table <code>name</code></li></ul> <div class="warning custom-block"><p class="custom-block-title">WARNING</p> <p><code>limit</code> and <code>offset</code> are optional. But, you have to provide <code>limit</code> if you want to use <code>offset</code>.</p></div> <h3 id="read-table-by-object"><a href="#read-table-by-object" aria-hidden="true" class="header-anchor">#</a> Read table by object</h3> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code>sql<span class="token punctuation">.</span><span class="token function">readRowByObject</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  name<span class="token punctuation">:</span> <span class="token string">'users'</span><span class="token punctuation">,</span>
+  limit<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token comment">// (Optional) Limit the query results</span>
+  offset<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>  <span class="token comment">// (Optional) Results from offset along with limit</span>
+  where<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">'user1'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// resultant data is an Array.</span>
+  <span class="token comment">// If there are no entries matched, then array length is zero.</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Users with name &quot;kiran&quot;: '</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>err <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Failed to perform operation</span>
+  console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p><code>where</code> is an object condition.</p> <h3 id="update-table-by-object"><a href="#update-table-by-object" aria-hidden="true" class="header-anchor">#</a> Update table by object</h3> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code>sql<span class="token punctuation">.</span><span class="token function">updateTableByObject</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  name<span class="token punctuation">:</span> <span class="token string">'users'</span><span class="token punctuation">,</span>
+  where<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">'kiran'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    email<span class="token punctuation">:</span> <span class="token string">'kiran@gmail.com'</span><span class="token punctuation">,</span>
+    name<span class="token punctuation">:</span> <span class="token string">'Kiran Sai'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'update complete'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>err <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Failed to perform operation</span>
+  console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="delete-row-by-object"><a href="#delete-row-by-object" aria-hidden="true" class="header-anchor">#</a> Delete row by object</h3> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code>sql<span class="token punctuation">.</span><span class="token function">deleteRowByObject</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  name<span class="token punctuation">:</span> <span class="token string">'users'</span><span class="token punctuation">,</span>
+  where<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">'Kiran Sai'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Deleted'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>err <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Failed to perform operation</span>
+  console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="clear-full-table"><a href="#clear-full-table" aria-hidden="true" class="header-anchor">#</a> Clear full table</h3> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code>sql<span class="token punctuation">.</span><span class="token function">clearFullTable</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  name<span class="token punctuation">:</span> <span class="token string">'users'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Entire table is cleared'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>err <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Failed to perform operation</span>
+  console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="get-sqlite3-handle"><a href="#get-sqlite3-handle" aria-hidden="true" class="header-anchor">#</a> Get Sqlite3 handle</h3> <div class="language-JavaScript extra-class"><pre class="language-javascript"><code>sql<span class="token punctuation">.</span><span class="token function">getHandle</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p>This will return sql database handle and exposes sqlite3 library API. You can write your own SQL commands and perform more customized operations than CRUD. <strong>You need learn/use SQL commands to perform operations using sqlite3 library</strong>. Visit <a href="https://www.npmjs.com/package/sqlite3" target="_blank" rel="noopener noreferrer">sqlite3<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> for more information.</p></div> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----></div></div>
+    <script src="/assets/js/app.b0655fe9.js" defer></script><script src="/assets/js/4.d0b06be2.js" defer></script>
+  </body>
+</html>
