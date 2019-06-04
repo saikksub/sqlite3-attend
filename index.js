@@ -17,11 +17,7 @@ const NodeSqlite3 = function (props) {
   if (!(props && props.constructor === {}.constructor)) {
     throw new Error(`Database "path" and "name" is required.`)
   }
-  if (!props.sqlite3) {
-    throw new Error('Sqlite3 library is required.')
-  }
   try {
-    props.sqlite3.verbose()
     this.config = props
     this.db = null
   } catch (err) {
@@ -125,9 +121,12 @@ NodeSqlite3.prototype.init = function (schema) {
 NodeSqlite3.prototype.getHandle = sql.getHandle
 NodeSqlite3.prototype.readFullTable = sql.readFullTable
 NodeSqlite3.prototype.updateTableByValue = sql.updateTableByValue
+NodeSqlite3.prototype.updateTableByObject = sql.updateTableByObject
 NodeSqlite3.prototype.writeTable = sql.writeTable
 NodeSqlite3.prototype.deleteRowByValue = sql.deleteRowByValue
+NodeSqlite3.prototype.deleteRowByObject = sql.deleteRowByObject
 NodeSqlite3.prototype.clearFullTable = sql.clearFullTable
 NodeSqlite3.prototype.readRowByValue = sql.readRowByValue
+NodeSqlite3.prototype.readRowByObject = sql.readRowByObject
 
 module.exports = NodeSqlite3

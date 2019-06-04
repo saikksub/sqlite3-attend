@@ -3,22 +3,17 @@ Asynchronous higher level [node-sqlite3](https://github.com/mapbox/node-sqlite3)
 [![Build Status](https://travis-ci.com/saikksub/sqlite3-attend.svg?branch=master)](https://travis-ci.com/saikksub/sqlite3-attend)
 [![npm version](https://badge.fury.io/js/sqlite3-attend.svg)](https://badge.fury.io/js/sqlite3-attend)
 
-> Note: **sqlite3-attend** is just a wrapper around the **sqlite3** npm package. The internal dependency **sqlite3** has been removed. 
-
 ## Install
 ``` bash
-  npm i -S sqlite3
   npm i -s sqlite3-attend
 ```
 
 ## Usage
 **Note**: the module must be installed before use.
 ``` javascript
-  const sqlite3 = require('sqlite3')
   const Sqlite3Attend = require('sqlite3-attend')
   
   const sql = new Sqlite3Attend({
-    sqlite3: sqlite3, // Sqlite3 dependency
     path: './', // Path to create (or) open SQL database
     name: 'myDatabase' //Name of the database without '.db' extension
   })
@@ -99,7 +94,9 @@ Asynchronous higher level [node-sqlite3](https://github.com/mapbox/node-sqlite3)
 
 ``` javascript
   sql.readFullTable({
-    name: 'users'
+    name: 'users',
+    limit: 10, // (Optional) Limit the query results
+    offset: 2  // (Optional) Results from offset along with limit
   }).then((data) => {
     // resultant data is an Array.
     // If there are no entries available, then array length is zero.
@@ -107,13 +104,14 @@ Asynchronous higher level [node-sqlite3](https://github.com/mapbox/node-sqlite3)
   })
 ```
 
-## Read table row by value
+## Read table row by object
 ``` javascript
-  sql.readRowByValue({
+  sql.readRowByObject({
     name: 'users',
+    limit: 10, // (Optional) Limit the query results
+    offset: 2,  // (Optional) Results from offset along with limit
     where: {
-      key: 'name',
-      value: 'kiran'
+      name: 'kiran'
     }
   }).then((data) => {
     // resultant data is an Array.
@@ -122,53 +120,33 @@ Asynchronous higher level [node-sqlite3](https://github.com/mapbox/node-sqlite3)
   })
 ```
 
-In the above API, the object `where` is a key containing condition which specifies target table name - `key` and its value - `value`.
-
-The above example will try to find one/more row(s) inside a table `users` which contains `name` match with `kiran`.
-
-## Update table row by value
+## Update table row by object
 ``` javascript
-  sql.updateTableByValue({
+  sql.updateTableByObject({
     name: 'users',
     where: {
-      key: 'name',
-      value: 'kiran'
+      name: 'kiran'
     },
-    data: [
-      {
-        key: 'email',
-        value: 'kiran@gmail.com'
-      },
-      {
-        key: 'name',
-        value: 'Kiran Sai'
-      }
-    ]
+    data: {
+      email: 'kiran@gmail.com',
+      name: 'Kiran Sai'
+    }
   }).then(() => {
     console.log('update complete')
   })
 ```
-
-In the above API, the object `where` is a key containing condition which specifies target table name - `key` and its value - `value`.
-
-The `data` object contains new values to update. This `data` should be an Array of objects. Each object should represent column name and it's value.
-
-
-## Delete table row by value
+## Delete table row by object
 ``` javascript
-  sql.deleteRowByValue({
+  sql.deleteRowByObject({
     name: 'users',
     where: {
-      key: 'name',
-      value: 'Kiran Sai'
+      name: 'Kiran Sai'
     }
   }).then(() => {
     console.log('Deleted')
   })
 ```
-In the above API, the object `where` is a condition which specifies `key` and `value` of our condition.
 
-In the example, **all** the rows that matches `name` as `Kiran Sai` will be deleted.
 
 ## Clear a full table
 ``` javascript
@@ -178,8 +156,6 @@ In the example, **all** the rows that matches `name` as `Kiran Sai` will be dele
     console.log('Entire table is cleared')
   })
 ```
-
-`clearFullTable` will clear all the rows of a specified `table`. **This won't delete the table definition**.
 
 
 ## Get SQL database handle (Synchronous method)
