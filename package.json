@@ -1,6 +1,6 @@
 {
   "name": "sqlite3-attend",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "CRUD operations wrapper around Sqlite3",
   "main": "index.js",
   "directories": {
@@ -11,9 +11,11 @@
     "fs-extra": "^7.0.1",
     "sqlite3": "^4.0.8"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^25.1.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
